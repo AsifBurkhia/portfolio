@@ -776,6 +776,10 @@ h2 {
   gap: 12px;
 }
 
+.professional-training {
+  margin-top: 24px;
+}
+
 .certificate-card {
   min-height: 135px;
   padding: 19px 20px;
