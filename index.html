@@ -9,6 +9,7 @@
     />
     <meta name="theme-color" content="#f5f7f6" />
     <title>Asif Hussain | IT Infrastructure &amp; Digital Transformation</title>
+    <link rel="icon" type="image/png" sizes="128x128" href="assets/favicon.png" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
@@ -60,7 +61,13 @@
           <div class="visual-orbit orbit-one"></div>
           <div class="visual-orbit orbit-two"></div>
           <div class="visual-card">
-            <div class="avatar-placeholder">
+            <button
+              class="avatar-placeholder avatar-trigger"
+              type="button"
+              aria-label="View a larger portrait of Asif Hussain"
+              aria-haspopup="dialog"
+              disabled
+            >
               <span class="avatar-fallback" aria-hidden="true">AH</span>
               <img
                 class="avatar-photo"
@@ -68,7 +75,7 @@
                 alt="Portrait of Asif Hussain"
                 hidden
               />
-            </div>
+            </button>
             <p class="visual-name">Asif Hussain</p>
             <p class="visual-role">IT Infrastructure &amp; Digital Transformation</p>
             <div class="visual-divider"></div>
@@ -80,6 +87,24 @@
           <span class="visual-caption">Digital infrastructure. Institutional impact.</span>
         </div>
       </section>
+
+      <div class="photo-hover-preview" aria-hidden="true">
+        <img src="assets/profile.png" alt="" />
+        <p>
+          <strong class="photo-preview-title">Asif Hussain</strong>
+          <span class="photo-preview-subtitle">IT Infrastructure &amp; Digital Transformation</span>
+        </p>
+      </div>
+      <dialog class="photo-dialog" aria-label="Portrait of Asif Hussain">
+        <button class="photo-dialog-close" type="button" aria-label="Close portrait preview">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="photo-dialog-image" src="assets/profile.png" alt="Portrait of Asif Hussain" />
+        <p class="photo-dialog-caption">
+          <strong class="photo-dialog-title">Asif Hussain</strong>
+          <span class="photo-dialog-subtitle">IT Infrastructure &amp; Digital Transformation</span>
+        </p>
+      </dialog>
 
       <section class="quick-facts" aria-label="Professional highlights">
         <div class="facts-inner">
@@ -189,7 +214,13 @@
         <div class="project-grid">
           <article class="project-card project-featured">
             <div class="project-art art-green">
-              <img class="project-image" src="assets/experience01.png" alt="Smart campus infrastructure project artwork" loading="lazy" />
+              <button
+                class="project-image-trigger"
+                type="button"
+                aria-label="View larger image: Smart campus infrastructure"
+              >
+                <img class="project-image" src="assets/experience01.png" alt="Smart campus infrastructure network architecture" loading="lazy" />
+              </button>
             </div>
             <div class="project-info">
               <p class="role-type">KIU · CONTRIBUTING SINCE 2016</p>
@@ -200,7 +231,13 @@
           </article>
           <article class="project-card">
             <div class="project-art art-blue">
-              <img class="project-image" src="assets/experience02.png" alt="Enterprise network and data center project artwork" loading="lazy" />
+              <button
+                class="project-image-trigger"
+                type="button"
+                aria-label="View larger image: Building the digital backbone at KIU Gilgit"
+              >
+                <img class="project-image" src="assets/experience02.png" alt="Asif Hussain in the KIU Gilgit data center" loading="lazy" />
+              </button>
             </div>
             <div class="project-info">
               <p class="role-type">KIU GILGIT · DATA CENTER</p>

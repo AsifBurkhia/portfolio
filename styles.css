@@ -315,14 +315,36 @@ h2 span {
   width: 150px;
   height: 150px;
   margin-top: 8px;
+  padding: 0;
   overflow: hidden;
   place-items: center;
   border-radius: 50%;
+  border: 0;
   background: #e2edda;
   color: #466d40;
   font-family: var(--display);
   font-size: 27px;
   font-weight: 700;
+}
+
+.avatar-trigger {
+  position: relative;
+  cursor: zoom-in;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.avatar-trigger:not(:disabled):hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 5px rgba(102, 141, 91, 0.18);
+}
+
+.avatar-trigger:focus-visible {
+  outline: 3px solid #668d5b;
+  outline-offset: 5px;
+}
+
+.avatar-trigger:disabled {
+  cursor: default;
 }
 
 .avatar-photo {
@@ -334,6 +356,133 @@ h2 span {
 
 .avatar-photo[hidden] {
   display: none;
+}
+
+.photo-hover-preview {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 18px;
+  background: rgba(15, 27, 23, 0.86);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  backdrop-filter: blur(12px);
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.photo-hover-preview.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.photo-hover-preview img {
+  width: min(68vmin, 520px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 35%;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+}
+
+.photo-hover-preview p {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  text-align: center;
+}
+
+.photo-preview-title {
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.photo-preview-subtitle {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 12px;
+}
+
+.photo-hover-preview.is-project-preview img {
+  width: min(88vw, 1240px);
+  max-height: 72vh;
+  aspect-ratio: auto;
+  border-radius: 12px;
+  object-fit: contain;
+  object-position: center;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.photo-dialog {
+  position: relative;
+  width: fit-content;
+  max-width: min(92vw, 720px);
+  max-height: 90dvh;
+  padding: 16px;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.36);
+}
+
+.photo-dialog::backdrop {
+  background: rgba(15, 27, 23, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.photo-dialog > img {
+  display: block;
+  max-width: 100%;
+  max-height: min(76dvh, 720px);
+  margin: 0 auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.photo-dialog > p {
+  margin: 14px 42px 2px 2px;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.photo-dialog > p span {
+  display: block;
+  margin-top: 4px;
+  color: #72807a;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.photo-dialog-close {
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  right: 24px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgba(33, 48, 41, 0.15);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.photo-dialog-close:focus-visible {
+  outline: 3px solid #668d5b;
+  outline-offset: 3px;
 }
 
 .visual-name {
@@ -638,12 +787,35 @@ h2 {
   place-items: center;
 }
 
+.project-image-trigger {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.project-image-trigger:focus-visible {
+  z-index: 1;
+  outline: 3px solid #668d5b;
+  outline-offset: -4px;
+}
+
 .project-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.project-image-trigger:hover .project-image {
+  transform: scale(1.035);
 }
 
 .art-green {
@@ -1704,5 +1876,13 @@ h2 {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-trigger,
+  .project-image,
+  .photo-hover-preview {
+    transition: none;
   }
 }
